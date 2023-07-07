@@ -1,0 +1,10 @@
+//test on console
+let altura = 0 
+let base = 0
+
+function calculaArea(base, altura) {
+    let resultado = base * altura
+    console.log(resultado)
+}
+
+calculaArea(5,5)
