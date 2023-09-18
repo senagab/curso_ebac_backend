@@ -1,8 +1,8 @@
 const form = document.getElementById('form-atividade');
 const imgAprovado = '<img src="./images/aprovado.png" alt="emoji festejando" />'
 const imgReprovado = '<img src="./images/reprovado.png" alt="emoji decepcionado" />'
-const atividades = [];
-const notas = [];
+const contato = [];
+const numeroContato = [];
 const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
 const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
 // const notaMinima = parseFloat(prompt("Digite a nota mínima: "));
@@ -21,20 +21,20 @@ form.addEventListener('submit', function(e) {
 
 function adicionaLinha () {
 
-    const inputNomeAtividade = document.getElementById('nome-atividade');
-    const inputNotaAtividade = document.getElementById('nota-atividade');
+    const inputContato = document.getElementById('nome-contato');
+    const inputNumeroContato = document.getElementById('numero-contato');
 
-    if (atividades.includes(inputNomeAtividade.value)) {
-        alert(`A atividade ${inputNomeAtividade.value} já foi inserida.`)
+    if (contato.includes(inputContato.value)) {
+        alert(`O contato ${inputContato.value} já foi inserido.`)
     } else {
 
-        atividades.push(inputNomeAtividade.value);
-        notas.push(parseFloat(inputNotaAtividade.value));
+        contato.push(inputContato.value);
+        numeroContato.push(parseFloat(inputNumeroContato.value));
     
         let linha = '<tr>';
-        linha += `<td>${inputNomeAtividade.value}</td>`;
-        linha += `<td>${inputNotaAtividade.value}</td>`;
-        linha += `<td>${inputNotaAtividade.value >= notaMinima ? imgAprovado : imgReprovado}</td>`;
+        linha += `<td>${inputContato.value}</td>`;
+        linha += `<td>${inputNumeroContato.value}</td>`;
+        // linha += `<td>${inputNumeroContato.value >= notaMinima ? imgAprovado : imgReprovado}</td>`;
         // ternario
         // if utilizando o input como parametro
         // o if com ?
@@ -46,8 +46,8 @@ function adicionaLinha () {
     
     }
 
-    inputNomeAtividade.value = ''
-    inputNotaAtividade.value = ''
+    inputContato.value = ''
+    inputNumeroContato.value = ''
 
 }
 
@@ -67,18 +67,3 @@ function atualizaMediaFinal() {
 
     // console.log(media);
 };
-
-function calculaMediaFinal() {
-
-    let somaNotas = 0;
-
-    for (let i = 0; i < notas.length; i++){
-
-        somaNotas += notas[i];
-
-    }
-
-    return somaNotas / notas.length;
-
-    
-}
