@@ -6,6 +6,11 @@ const numeroContato = [];
 const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
 const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
 // const notaMinima = parseFloat(prompt("Digite a nota mínima: "));
+const removeImg = '<img class="remove" src="./images/remove-icon.png" alt="icone lixeira" />'
+const btnRemove = document.getElementsByClassName('remove');
+const table = document.getElementById('tabela');
+
+// const img = document.getElementById('remove');
 
 let linhas = '';
 
@@ -15,7 +20,6 @@ form.addEventListener('submit', function(e) {
 
     adicionaLinha();
     atualizaTabela();
-    atualizaMediaFinal();
 
 });
 
@@ -39,6 +43,7 @@ function adicionaLinha () {
         // if utilizando o input como parametro
         // o if com ?
         // e else como :
+        linha += `<td>${removeImg}</td>`;
         linha += `</tr>`;
         // linha = linha + 'outro conteudo'
         
@@ -51,19 +56,25 @@ function adicionaLinha () {
 
 }
 
+table.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('remove')) {
+        handleRemoveItemClick();
+    }
+});
+
+function handleRemoveItemClick() {
+    console.log('Item clicked', inputContato.value);
+}
+
+function removeLinha() {
+
+    console.log('Image inside a TD was clicked.');
+
+}
+
 function atualizaTabela(){
     
     const corpoTabela = document.querySelector('tbody');
     corpoTabela.innerHTML = linhas;
 
 }
-
-function atualizaMediaFinal() {
-
-    const mediaFinal = calculaMediaFinal();
-
-    document.getElementById('media-final-valor').innerHTML = mediaFinal;
-    document.getElementById('media-final-resultado').innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
-
-    // console.log(media);
-};
