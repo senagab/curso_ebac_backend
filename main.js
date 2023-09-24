@@ -1,17 +1,9 @@
 const form = document.getElementById('form-atividade');
-const imgAprovado = '<img src="./images/aprovado.png" alt="emoji festejando" />'
-const imgReprovado = '<img src="./images/reprovado.png" alt="emoji decepcionado" />'
 const contato = [];
 const numeroContato = [];
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
-// const notaMinima = parseFloat(prompt("Digite a nota mínima: "));
-const removeImg = '<img class="remove" src="./images/remove-icon.png" alt="icone lixeira" />'
-const btnRemove = document.getElementsByClassName('remove');
 const table = document.getElementById('tabela');
 const inputContato = document.getElementById('nome-contato');
 
-// const img = document.getElementById('remove');
 
 let linhas = '';
 
@@ -31,21 +23,13 @@ function adicionaLinha () {
     if (contato.includes(inputContato.value)) {
         alert(`O contato ${inputContato.value} já foi inserido.`)
     } else {
-
         contato.push(inputContato.value);
         numeroContato.push(parseFloat(inputNumeroContato.value));
     
         let linha = '<tr>';
         linha += `<td>${inputContato.value}</td>`;
         linha += `<td>${inputNumeroContato.value}</td>`;
-        // linha += `<td>${inputNumeroContato.value >= notaMinima ? imgAprovado : imgReprovado}</td>`;
-        // ternario
-        // if utilizando o input como parametro
-        // o if com ?
-        // e else como :
-        linha += `<td>${removeImg}</td>`;
         linha += `</tr>`;
-        // linha = linha + 'outro conteudo'
         
         linhas += linha;
     
@@ -58,31 +42,9 @@ function adicionaLinha () {
 
 table.addEventListener('click', function(event) {
     if (event.target && event.target.classList.contains('remove')) {
-        handleRemoveItemClick();
-    }
-});
-
-function handleRemoveItemClick(event) {
-    // alert(`are you sure you want to remove this contact?`)
-    const td = event.target.closest('td')
-    if (td) {
-        const tr = td.parentElement; // pega o parent row (tr)
-        tr.remove()
-    }
-    // console.log('Item clicked', inputContato.value);
-}
-
-table.addEventListener('click', function(event) {
-    if (event.target && event.target.classList.contains('remove')) {
         handleRemoveItemClick(event);  // passa o evento para a função
     }
 });
-
-function removeLinha() {
-
-    console.log('Image inside a TD was clicked.');
-
-}
 
 function atualizaTabela(){
     
