@@ -62,4 +62,10 @@ ul {
 
 li {
     margin: 0;
+    text-align: initial;
+    cursor: pointer;
+}
+
+li:hover {
+    color: #717171;
 }
