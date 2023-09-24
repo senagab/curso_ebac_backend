@@ -4,7 +4,9 @@ $(document).ready(function() {
 
         const itemClicado = $(this).text();
         console.log('tarefa', itemClicado, 'concluida');
-        $(this).addClass('clicked');
+        
+        
+        $(this).toggleClass('clicked');
     });
 
     $('#btn-cadastrar').on('click', function (e) {
