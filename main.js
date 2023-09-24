@@ -1,5 +1,6 @@
 $(document).ready(function (){
 
-    alert('ola jquery')
+    console.log(document.querySelector('header button')); //js vanilla)
+    console.log($('header button')); // jquery)
 
 });
