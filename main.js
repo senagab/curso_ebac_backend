@@ -5,7 +5,6 @@ $(document).ready(function() {
         const itemClicado = $(this).text();
         console.log('tarefa', itemClicado, 'concluida');
         
-        
         $(this).toggleClass('clicked');
     });
 
