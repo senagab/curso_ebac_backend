@@ -1,12 +1,24 @@
+$(document).ready(function() {
 
-$('#btn-cadastrar').on('click', function (e) {
-    e.preventDefault();
-    console.log('ola');
+    $('#itens-lista').on('click', 'li', function() {
 
-    const novaTarefa = $('#input-tarefa').val();
-    const novoItem = $(`<li>${novaTarefa}</li>`);
-    $(novoItem).appendTo('ul');
+        const itemClicado = $(this).text();
+        console.log('tarefa', itemClicado, 'concluida');
+        $(this).addClass('clicked');
+    });
 
-    console.log('item adicionado com sucesso!');
-    $('#input-tarefa').val('');
+    $('#btn-cadastrar').on('click', function (e) {
+        e.preventDefault();
+        // console.log('botao clicado');
+
+        const novaTarefa = $('#input-tarefa').val(); // pega o conteúdo que foi escrito
+        const novoItem = $(`<li class="item-lista">${novaTarefa}</li>`);
+        $('#itens-lista').append(novoItem);
+
+        console.log('item adicionado com sucesso!');
+
+        // reset inputs
+        $('#input-tarefa').val('');
+    })
+
 });
