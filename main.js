@@ -9,6 +9,7 @@ const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
 const removeImg = '<img class="remove" src="./images/remove-icon.png" alt="icone lixeira" />'
 const btnRemove = document.getElementsByClassName('remove');
 const table = document.getElementById('tabela');
+const inputContato = document.getElementById('nome-contato');
 
 // const img = document.getElementById('remove');
 
@@ -25,7 +26,6 @@ form.addEventListener('submit', function(e) {
 
 function adicionaLinha () {
 
-    const inputContato = document.getElementById('nome-contato');
     const inputNumeroContato = document.getElementById('numero-contato');
 
     if (contato.includes(inputContato.value)) {
@@ -62,9 +62,21 @@ table.addEventListener('click', function(event) {
     }
 });
 
-function handleRemoveItemClick() {
-    console.log('Item clicked', inputContato.value);
+function handleRemoveItemClick(event) {
+    // alert(`are you sure you want to remove this contact?`)
+    const td = event.target.closest('td')
+    if (td) {
+        const tr = td.parentElement; // pega o parent row (tr)
+        tr.remove()
+    }
+    // console.log('Item clicked', inputContato.value);
 }
+
+table.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('remove')) {
+        handleRemoveItemClick(event);  // passa o evento para a função
+    }
+});
 
 function removeLinha() {
 
