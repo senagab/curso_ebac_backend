@@ -1,6 +1,12 @@
 $(document).ready(function (){
 
-    console.log(document.querySelector('header button')); //js vanilla)
-    console.log($('header button')); // jquery)
+    $('header button').click(function () {
+        alert('expandir formulario')
+    });
+
+    $('form').on('submit', function (e) { // callback
+        console.log("submit");
+        e.preventDefault();
+    });
 
 });
